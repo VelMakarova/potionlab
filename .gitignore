@@ -1,0 +1,7 @@
+# Local documentation and publishing assets
+/md/
+/publish-assets/
+
+# Workspace editor settings and macOS metadata
+/.idea/
+.DS_Store

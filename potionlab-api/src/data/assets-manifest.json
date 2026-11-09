@@ -1,0 +1,302 @@
+{
+  "dragon-scale": {
+    "full": "ingredients/dragon-scale/v1/full.svg",
+    "thumb128": "ingredients/dragon-scale/v1/thumb-128.svg",
+    "thumb64": "ingredients/dragon-scale/v1/thumb-64.svg"
+  },
+  "ember-root": {
+    "full": "ingredients/ember-root/v1/full.svg",
+    "thumb128": "ingredients/ember-root/v1/thumb-128.svg",
+    "thumb64": "ingredients/ember-root/v1/thumb-64.svg"
+  },
+  "cinder-bloom": {
+    "full": "ingredients/cinder-bloom/v1/full.svg",
+    "thumb128": "ingredients/cinder-bloom/v1/thumb-128.svg",
+    "thumb64": "ingredients/cinder-bloom/v1/thumb-64.svg"
+  },
+  "volcanic-glass": {
+    "full": "ingredients/volcanic-glass/v1/full.svg",
+    "thumb128": "ingredients/volcanic-glass/v1/thumb-128.svg",
+    "thumb64": "ingredients/volcanic-glass/v1/thumb-64.svg"
+  },
+  "salamander-oil": {
+    "full": "ingredients/salamander-oil/v1/full.svg",
+    "thumb128": "ingredients/salamander-oil/v1/thumb-128.svg",
+    "thumb64": "ingredients/salamander-oil/v1/thumb-64.svg"
+  },
+  "sunpepper": {
+    "full": "ingredients/sunpepper/v1/full.svg",
+    "thumb128": "ingredients/sunpepper/v1/thumb-128.svg",
+    "thumb64": "ingredients/sunpepper/v1/thumb-64.svg"
+  },
+  "ashen-bark": {
+    "full": "ingredients/ashen-bark/v1/full.svg",
+    "thumb128": "ingredients/ashen-bark/v1/thumb-128.svg",
+    "thumb64": "ingredients/ashen-bark/v1/thumb-64.svg"
+  },
+  "magma-pearl": {
+    "full": "ingredients/magma-pearl/v1/full.svg",
+    "thumb128": "ingredients/magma-pearl/v1/thumb-128.svg",
+    "thumb64": "ingredients/magma-pearl/v1/thumb-64.svg"
+  },
+  "firefly-dust": {
+    "full": "ingredients/firefly-dust/v1/full.svg",
+    "thumb128": "ingredients/firefly-dust/v1/thumb-128.svg",
+    "thumb64": "ingredients/firefly-dust/v1/thumb-64.svg"
+  },
+  "sulfur-crystal": {
+    "full": "ingredients/sulfur-crystal/v1/full.svg",
+    "thumb128": "ingredients/sulfur-crystal/v1/thumb-128.svg",
+    "thumb64": "ingredients/sulfur-crystal/v1/thumb-64.svg"
+  },
+  "moonwell-dew": {
+    "full": "ingredients/moonwell-dew/v1/full.svg",
+    "thumb128": "ingredients/moonwell-dew/v1/thumb-128.svg",
+    "thumb64": "ingredients/moonwell-dew/v1/thumb-64.svg"
+  },
+  "river-reed": {
+    "full": "ingredients/river-reed/v1/full.svg",
+    "thumb128": "ingredients/river-reed/v1/thumb-128.svg",
+    "thumb64": "ingredients/river-reed/v1/thumb-64.svg"
+  },
+  "tidal-pearl": {
+    "full": "ingredients/tidal-pearl/v1/full.svg",
+    "thumb128": "ingredients/tidal-pearl/v1/thumb-128.svg",
+    "thumb64": "ingredients/tidal-pearl/v1/thumb-64.svg"
+  },
+  "frost-crystal": {
+    "full": "ingredients/frost-crystal/v1/full.svg",
+    "thumb128": "ingredients/frost-crystal/v1/thumb-128.svg",
+    "thumb64": "ingredients/frost-crystal/v1/thumb-64.svg"
+  },
+  "seafoam-salt": {
+    "full": "ingredients/seafoam-salt/v1/full.svg",
+    "thumb128": "ingredients/seafoam-salt/v1/thumb-128.svg",
+    "thumb64": "ingredients/seafoam-salt/v1/thumb-64.svg"
+  },
+  "deepwater-kelp": {
+    "full": "ingredients/deepwater-kelp/v1/full.svg",
+    "thumb128": "ingredients/deepwater-kelp/v1/thumb-128.svg",
+    "thumb64": "ingredients/deepwater-kelp/v1/thumb-64.svg"
+  },
+  "rain-orchid": {
+    "full": "ingredients/rain-orchid/v1/full.svg",
+    "thumb128": "ingredients/rain-orchid/v1/thumb-128.svg",
+    "thumb64": "ingredients/rain-orchid/v1/thumb-64.svg"
+  },
+  "mist-moss": {
+    "full": "ingredients/mist-moss/v1/full.svg",
+    "thumb128": "ingredients/mist-moss/v1/thumb-128.svg",
+    "thumb64": "ingredients/mist-moss/v1/thumb-64.svg"
+  },
+  "glacier-shard": {
+    "full": "ingredients/glacier-shard/v1/full.svg",
+    "thumb128": "ingredients/glacier-shard/v1/thumb-128.svg",
+    "thumb64": "ingredients/glacier-shard/v1/thumb-64.svg"
+  },
+  "springwater-lotus": {
+    "full": "ingredients/springwater-lotus/v1/full.svg",
+    "thumb128": "ingredients/springwater-lotus/v1/thumb-128.svg",
+    "thumb64": "ingredients/springwater-lotus/v1/thumb-64.svg"
+  },
+  "zephyr-feather": {
+    "full": "ingredients/zephyr-feather/v1/full.svg",
+    "thumb128": "ingredients/zephyr-feather/v1/thumb-128.svg",
+    "thumb64": "ingredients/zephyr-feather/v1/thumb-64.svg"
+  },
+  "whisper-reed": {
+    "full": "ingredients/whisper-reed/v1/full.svg",
+    "thumb128": "ingredients/whisper-reed/v1/thumb-128.svg",
+    "thumb64": "ingredients/whisper-reed/v1/thumb-64.svg"
+  },
+  "cloud-cotton": {
+    "full": "ingredients/cloud-cotton/v1/full.svg",
+    "thumb128": "ingredients/cloud-cotton/v1/thumb-128.svg",
+    "thumb64": "ingredients/cloud-cotton/v1/thumb-64.svg"
+  },
+  "stormglass-shard": {
+    "full": "ingredients/stormglass-shard/v1/full.svg",
+    "thumb128": "ingredients/stormglass-shard/v1/thumb-128.svg",
+    "thumb64": "ingredients/stormglass-shard/v1/thumb-64.svg"
+  },
+  "sky-thistle": {
+    "full": "ingredients/sky-thistle/v1/full.svg",
+    "thumb128": "ingredients/sky-thistle/v1/thumb-128.svg",
+    "thumb64": "ingredients/sky-thistle/v1/thumb-64.svg"
+  },
+  "wind-chime-shell": {
+    "full": "ingredients/wind-chime-shell/v1/full.svg",
+    "thumb128": "ingredients/wind-chime-shell/v1/thumb-128.svg",
+    "thumb64": "ingredients/wind-chime-shell/v1/thumb-64.svg"
+  },
+  "hurricane-seed": {
+    "full": "ingredients/hurricane-seed/v1/full.svg",
+    "thumb128": "ingredients/hurricane-seed/v1/thumb-128.svg",
+    "thumb64": "ingredients/hurricane-seed/v1/thumb-64.svg"
+  },
+  "dawn-mist-vapor": {
+    "full": "ingredients/dawn-mist-vapor/v1/full.svg",
+    "thumb128": "ingredients/dawn-mist-vapor/v1/thumb-128.svg",
+    "thumb64": "ingredients/dawn-mist-vapor/v1/thumb-64.svg"
+  },
+  "thunderbird-feather": {
+    "full": "ingredients/thunderbird-feather/v1/full.svg",
+    "thumb128": "ingredients/thunderbird-feather/v1/thumb-128.svg",
+    "thumb64": "ingredients/thunderbird-feather/v1/thumb-64.svg"
+  },
+  "breeze-fern": {
+    "full": "ingredients/breeze-fern/v1/full.svg",
+    "thumb128": "ingredients/breeze-fern/v1/thumb-128.svg",
+    "thumb64": "ingredients/breeze-fern/v1/thumb-64.svg"
+  },
+  "ironroot-bark": {
+    "full": "ingredients/ironroot-bark/v1/full.svg",
+    "thumb128": "ingredients/ironroot-bark/v1/thumb-128.svg",
+    "thumb64": "ingredients/ironroot-bark/v1/thumb-64.svg"
+  },
+  "granite-dust": {
+    "full": "ingredients/granite-dust/v1/full.svg",
+    "thumb128": "ingredients/granite-dust/v1/thumb-128.svg",
+    "thumb64": "ingredients/granite-dust/v1/thumb-64.svg"
+  },
+  "moss-agate": {
+    "full": "ingredients/moss-agate/v1/full.svg",
+    "thumb128": "ingredients/moss-agate/v1/thumb-128.svg",
+    "thumb64": "ingredients/moss-agate/v1/thumb-64.svg"
+  },
+  "amber-resin": {
+    "full": "ingredients/amber-resin/v1/full.svg",
+    "thumb128": "ingredients/amber-resin/v1/thumb-128.svg",
+    "thumb64": "ingredients/amber-resin/v1/thumb-64.svg"
+  },
+  "mandrake-root": {
+    "full": "ingredients/mandrake-root/v1/full.svg",
+    "thumb128": "ingredients/mandrake-root/v1/thumb-128.svg",
+    "thumb64": "ingredients/mandrake-root/v1/thumb-64.svg"
+  },
+  "clayheart-stone": {
+    "full": "ingredients/clayheart-stone/v1/full.svg",
+    "thumb128": "ingredients/clayheart-stone/v1/thumb-128.svg",
+    "thumb64": "ingredients/clayheart-stone/v1/thumb-64.svg"
+  },
+  "crystal-fern": {
+    "full": "ingredients/crystal-fern/v1/full.svg",
+    "thumb128": "ingredients/crystal-fern/v1/thumb-128.svg",
+    "thumb64": "ingredients/crystal-fern/v1/thumb-64.svg"
+  },
+  "burrowing-beetle-shell": {
+    "full": "ingredients/burrowing-beetle-shell/v1/full.svg",
+    "thumb128": "ingredients/burrowing-beetle-shell/v1/thumb-128.svg",
+    "thumb64": "ingredients/burrowing-beetle-shell/v1/thumb-64.svg"
+  },
+  "oak-gall": {
+    "full": "ingredients/oak-gall/v1/full.svg",
+    "thumb128": "ingredients/oak-gall/v1/thumb-128.svg",
+    "thumb64": "ingredients/oak-gall/v1/thumb-64.svg"
+  },
+  "geode-core": {
+    "full": "ingredients/geode-core/v1/full.svg",
+    "thumb128": "ingredients/geode-core/v1/thumb-128.svg",
+    "thumb64": "ingredients/geode-core/v1/thumb-64.svg"
+  },
+  "grave-soil": {
+    "full": "ingredients/grave-soil/v1/full.svg",
+    "thumb128": "ingredients/grave-soil/v1/thumb-128.svg",
+    "thumb64": "ingredients/grave-soil/v1/thumb-64.svg"
+  },
+  "nightshade-berry": {
+    "full": "ingredients/nightshade-berry/v1/full.svg",
+    "thumb128": "ingredients/nightshade-berry/v1/thumb-128.svg",
+    "thumb64": "ingredients/nightshade-berry/v1/thumb-64.svg"
+  },
+  "shadow-silk": {
+    "full": "ingredients/shadow-silk/v1/full.svg",
+    "thumb128": "ingredients/shadow-silk/v1/thumb-128.svg",
+    "thumb64": "ingredients/shadow-silk/v1/thumb-64.svg"
+  },
+  "raven-bone": {
+    "full": "ingredients/raven-bone/v1/full.svg",
+    "thumb128": "ingredients/raven-bone/v1/thumb-128.svg",
+    "thumb64": "ingredients/raven-bone/v1/thumb-64.svg"
+  },
+  "black-candle-wax": {
+    "full": "ingredients/black-candle-wax/v1/full.svg",
+    "thumb128": "ingredients/black-candle-wax/v1/thumb-128.svg",
+    "thumb64": "ingredients/black-candle-wax/v1/thumb-64.svg"
+  },
+  "eclipse-dust": {
+    "full": "ingredients/eclipse-dust/v1/full.svg",
+    "thumb128": "ingredients/eclipse-dust/v1/thumb-128.svg",
+    "thumb64": "ingredients/eclipse-dust/v1/thumb-64.svg"
+  },
+  "wraith-ash": {
+    "full": "ingredients/wraith-ash/v1/full.svg",
+    "thumb128": "ingredients/wraith-ash/v1/thumb-128.svg",
+    "thumb64": "ingredients/wraith-ash/v1/thumb-64.svg"
+  },
+  "crypt-lichen": {
+    "full": "ingredients/crypt-lichen/v1/full.svg",
+    "thumb128": "ingredients/crypt-lichen/v1/thumb-128.svg",
+    "thumb64": "ingredients/crypt-lichen/v1/thumb-64.svg"
+  },
+  "obsidian-thorn": {
+    "full": "ingredients/obsidian-thorn/v1/full.svg",
+    "thumb128": "ingredients/obsidian-thorn/v1/thumb-128.svg",
+    "thumb64": "ingredients/obsidian-thorn/v1/thumb-64.svg"
+  },
+  "mourning-bell-petal": {
+    "full": "ingredients/mourning-bell-petal/v1/full.svg",
+    "thumb128": "ingredients/mourning-bell-petal/v1/thumb-128.svg",
+    "thumb64": "ingredients/mourning-bell-petal/v1/thumb-64.svg"
+  },
+  "dawnblossom-petal": {
+    "full": "ingredients/dawnblossom-petal/v1/full.svg",
+    "thumb128": "ingredients/dawnblossom-petal/v1/thumb-128.svg",
+    "thumb64": "ingredients/dawnblossom-petal/v1/thumb-64.svg"
+  },
+  "sunstone-dust": {
+    "full": "ingredients/sunstone-dust/v1/full.svg",
+    "thumb128": "ingredients/sunstone-dust/v1/thumb-128.svg",
+    "thumb64": "ingredients/sunstone-dust/v1/thumb-64.svg"
+  },
+  "angelica-root": {
+    "full": "ingredients/angelica-root/v1/full.svg",
+    "thumb128": "ingredients/angelica-root/v1/thumb-128.svg",
+    "thumb64": "ingredients/angelica-root/v1/thumb-64.svg"
+  },
+  "halo-moss": {
+    "full": "ingredients/halo-moss/v1/full.svg",
+    "thumb128": "ingredients/halo-moss/v1/thumb-128.svg",
+    "thumb64": "ingredients/halo-moss/v1/thumb-64.svg"
+  },
+  "starlight-nectar": {
+    "full": "ingredients/starlight-nectar/v1/full.svg",
+    "thumb128": "ingredients/starlight-nectar/v1/thumb-128.svg",
+    "thumb64": "ingredients/starlight-nectar/v1/thumb-64.svg"
+  },
+  "white-sage-leaf": {
+    "full": "ingredients/white-sage-leaf/v1/full.svg",
+    "thumb128": "ingredients/white-sage-leaf/v1/thumb-128.svg",
+    "thumb64": "ingredients/white-sage-leaf/v1/thumb-64.svg"
+  },
+  "golden-honey": {
+    "full": "ingredients/golden-honey/v1/full.svg",
+    "thumb128": "ingredients/golden-honey/v1/thumb-128.svg",
+    "thumb64": "ingredients/golden-honey/v1/thumb-64.svg"
+  },
+  "luminous-pearl": {
+    "full": "ingredients/luminous-pearl/v1/full.svg",
+    "thumb128": "ingredients/luminous-pearl/v1/thumb-128.svg",
+    "thumb64": "ingredients/luminous-pearl/v1/thumb-64.svg"
+  },
+  "silverleaf-bloom": {
+    "full": "ingredients/silverleaf-bloom/v1/full.svg",
+    "thumb128": "ingredients/silverleaf-bloom/v1/thumb-128.svg",
+    "thumb64": "ingredients/silverleaf-bloom/v1/thumb-64.svg"
+  },
+  "aurora-crystal": {
+    "full": "ingredients/aurora-crystal/v1/full.svg",
+    "thumb128": "ingredients/aurora-crystal/v1/thumb-128.svg",
+    "thumb64": "ingredients/aurora-crystal/v1/thumb-64.svg"
+  }
+}
