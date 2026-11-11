@@ -1,13 +1,13 @@
-import { copy } from "../../../shared/i18n";
-import type { Language } from "../../../shared/i18n/types";
-import type { BrewingState, BrewError } from "../model/types";
+import { copy } from '../../../shared/i18n';
+import type { Language } from '../../../shared/i18n/types';
+import type { BrewingState, BrewError } from '../model/types';
 const errorCopy = {
-  rate_limit: "rateLimit",
-  invalid_selection: "inputError",
-  unavailable: "unavailable",
-  timeout: "error",
-  invalid_response: "error",
-  network: "error",
+  rate_limit: 'rateLimit',
+  invalid_selection: 'inputError',
+  unavailable: 'unavailable',
+  timeout: 'error',
+  invalid_response: 'error',
+  network: 'error',
 } as const satisfies Record<BrewError, keyof typeof copy.ua>;
 export function BrewResult({
   brewing,
@@ -18,15 +18,15 @@ export function BrewResult({
 }) {
   const t = copy[language];
   let text = t.emptyResult;
-  if (brewing.phase === "brewing") text = t.brewing;
-  if (brewing.phase === "complete")
+  if (brewing.phase === 'brewing') text = t.brewing;
+  if (brewing.phase === 'complete')
     text =
-      brewing.result.status === "brewed"
+      brewing.result.status === 'brewed'
         ? brewing.result.description
         : t[brewing.result.status];
-  const error = brewing.phase === "editing" ? brewing.error : null;
+  const error = brewing.phase === 'editing' ? brewing.error : null;
   return (
-    <section className="result" aria-labelledby="result-title">
+    <section className="result pl-panel" aria-labelledby="result-title">
       <h2 id="result-title">{t.result}</h2>
       <div
         className="result-description"

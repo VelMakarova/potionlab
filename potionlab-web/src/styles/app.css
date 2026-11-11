@@ -1,18 +1,27 @@
 .app-shell {
-  height: 100dvh;
-  padding: 16px;
+  position: relative;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   overflow: hidden;
+  z-index: 0;
 }
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid;
-  padding: 8px 16px;
+
+.app-shell:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/potionlab-open-shelves-1400x950.webp');
+  z-index: -1;
+  filter: brightness(0.5) blur(2px);
 }
+
 .lab-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -27,6 +36,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+.catalog-header {
+  display: flex;
+  justify-content: space-between;
 }
 .ingredient-grid {
   list-style: none;
@@ -59,7 +72,7 @@
 }
 .workspace {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(70px, 1fr) auto auto;
+  grid-template-rows: minmax(0, 1fr) minmax(70px, 1fr) auto;
   gap: 12px;
   min-width: 0;
   min-height: 0;
@@ -75,12 +88,13 @@
 }
 .cauldron img,
 .cauldron .image-fallback {
-  flex: 1;
+  flex: 1 0 auto;
   min-height: 0;
-  max-height: 160px;
+  max-height: 190px;
   width: auto !important;
 }
 .result {
+  flex: 0;
   border: 1px solid;
   padding: 8px;
   display: flex;
@@ -111,16 +125,28 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
-.selected-card {
-  border: 1px solid;
-  min-width: 0;
-  padding: 8px;
+.pl-card.selected-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  padding: 8px;
+  gap: 0px;
+  overflow-wrap: anywhere;
+  justify-content: center;
   align-items: center;
+}
+
+.pl-card.selected-card-gap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 8px;
   gap: 4px;
   overflow-wrap: anywhere;
+  justify-content: center;
+  align-items: center;
 }
+
 .selected-card > span {
   flex: 1;
 }

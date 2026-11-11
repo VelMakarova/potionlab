@@ -1,7 +1,8 @@
-import { useShallow } from "zustand/react/shallow";
-import { copy } from "../../../shared/i18n";
-import { selectCanBrew, selectEditingAllowed } from "../model/selectors";
-import { useLaboratoryStore } from "../model/useLaboratoryStore";
+import { useShallow } from 'zustand/react/shallow';
+import { copy } from '../../../shared/i18n';
+import { selectCanBrew, selectEditingAllowed } from '../model/selectors';
+import { useLaboratoryStore } from '../model/useLaboratoryStore';
+
 export function BrewAction({ newCycle }: { newCycle: () => void }) {
   const { language, brewing, locked, canBrew, brew, reset } =
     useLaboratoryStore(
@@ -12,13 +13,13 @@ export function BrewAction({ newCycle }: { newCycle: () => void }) {
         canBrew: selectCanBrew(state),
         brew: state.brew,
         reset: state.startNewBrew,
-      })),
+      }))
     );
   const t = copy[language];
-  const complete = brewing.phase === "complete";
+  const complete = brewing.phase === 'complete';
   const title = complete
     ? t.another
-    : brewing.phase === "brewing"
+    : brewing.phase === 'brewing'
       ? t.brewing
       : brewing.error
         ? t.retry
@@ -32,7 +33,11 @@ export function BrewAction({ newCycle }: { newCycle: () => void }) {
   return (
     <div className="brew-action">
       <p>{locked ? t.locked : t.choose}</p>
-      <button disabled={!complete && !canBrew} onClick={activate}>
+      <button
+        className="pl-button pl-raged"
+        disabled={!complete && !canBrew}
+        onClick={activate}
+      >
         {title}
       </button>
     </div>

@@ -1,12 +1,19 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from 'react';
 
 type ModalProps = {
   title: string;
   closeLabel: string;
   close: () => void;
   children: ReactNode;
+  className: string;
 };
-export function Modal({ title, closeLabel, close, children }: ModalProps) {
+export function Modal({
+  title,
+  closeLabel,
+  close,
+  children,
+  className,
+}: ModalProps) {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -21,6 +28,7 @@ export function Modal({ title, closeLabel, close, children }: ModalProps) {
 
   return (
     <dialog
+      className={`pl-modal ${className}`}
       ref={dialog}
       aria-label={title}
       onCancel={(event) => {
@@ -31,9 +39,11 @@ export function Modal({ title, closeLabel, close, children }: ModalProps) {
       <div className="modal-content">
         <header className="modal-header">
           <h2>{title}</h2>
-          <button onClick={close} aria-label={closeLabel}>
-            ×
-          </button>
+          <button
+            className="pl-icon pl-close"
+            onClick={close}
+            aria-label={closeLabel}
+          />
         </header>
         {children}
       </div>

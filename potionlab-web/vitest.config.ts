@@ -1,19 +1,19 @@
-import { defineConfig, mergeConfig } from "vitest/config";
-import viteConfig from "./vite.config.js";
+import { defineConfig, mergeConfig } from 'vitest/config';
+import viteConfig from './vite.config.js';
 
 export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
-      environment: "jsdom",
-      setupFiles: ["./src/test/setup.ts"],
-      include: ["src/test/**/*.test.ts", "src/test/**/*.test.tsx"],
+      environment: 'jsdom',
+      setupFiles: ['./src/test/setup.ts'],
+      include: ['src/test/**/*.test.ts', 'src/test/**/*.test.tsx'],
       coverage: {
-        provider: "v8",
-        reporter: ["text", "text-summary"],
-        include: ["src/**/*.{ts,tsx}"],
-        exclude: ["src/main.tsx", "src/test/**"],
+        provider: 'v8',
+        reporter: ['text', 'text-summary'],
+        include: ['src/**/*.{ts,tsx}'],
+        exclude: ['src/main.tsx', 'src/test/**'],
       },
     },
-  }),
+  })
 );

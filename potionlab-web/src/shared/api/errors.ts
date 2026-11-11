@@ -7,6 +7,6 @@ export class HttpError extends Error {
 }
 export class InvalidResponseError extends Error {
   constructor() {
-    super("Invalid API response");
+    super('Invalid API response');
   }
 }

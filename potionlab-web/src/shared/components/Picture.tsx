@@ -1,13 +1,20 @@
-import { useState } from "react";
-import { placeholder } from "../assets/placeholders";
+import { useState } from 'react';
+import { placeholder } from '../assets/placeholders';
 
 type PictureProps = {
   src: string;
   size: number;
   alt: string;
   failed: Readonly<Record<string, true>>;
+  imgClassName: string;
 };
-export function Picture({ src, size, alt, failed }: PictureProps) {
+export function Picture({
+  src,
+  size,
+  alt,
+  failed,
+  imgClassName,
+}: PictureProps) {
   const [broken, setBroken] = useState(false);
   const [fallbackBroken, setFallbackBroken] = useState(false);
   const fallback = placeholder(size);
@@ -32,6 +39,7 @@ export function Picture({ src, size, alt, failed }: PictureProps) {
       width={size}
       height={size}
       alt={alt}
+      className={imgClassName}
       onError={() => (useFallback ? setFallbackBroken(true) : setBroken(true))}
     />
   );

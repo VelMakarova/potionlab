@@ -1,14 +1,14 @@
-import { copy } from "../../../shared/i18n";
-import { useLaboratoryStore } from "../model/useLaboratoryStore";
+import { copy } from '../../../shared/i18n';
+import { useLaboratoryStore } from '../model/useLaboratoryStore';
 export function StartupScreen() {
   const language = useLaboratoryStore((state) => state.language);
   const failed = useLaboratoryStore(
-    (state) => state.catalog.status === "error",
+    (state) => state.catalog.status === 'error'
   );
   const retry = useLaboratoryStore((state) => state.retryCatalog);
   const t = copy[language];
   return (
-    <section className="startup" aria-label={t.ingredients}>
+    <section className="startup pl-frame" aria-label={t.ingredients}>
       {failed ? (
         <div role="alert">
           <p>{t.catalogError}</p>

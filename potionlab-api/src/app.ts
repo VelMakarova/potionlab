@@ -1,15 +1,15 @@
-import Fastify, { type FastifyServerOptions } from "fastify";
-import { apiRoutes } from "./routes/routes.js";
-import { registerDocumentation } from "./swagger.js";
+import Fastify, { type FastifyServerOptions } from 'fastify';
+import { apiRoutes } from './routes/routes.js';
+import { registerDocumentation } from './swagger.js';
 
 export async function createApp(options: FastifyServerOptions = {}) {
   const app = Fastify({
     logger: {
-      level: process.env.NODE_ENV === "production" ? "info" : "debug",
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
       redact: [
-        "req.headers.authorization",
+        'req.headers.authorization',
         'req.headers["x-goog-potionlab-api-key"]',
-        "req.headers.cookie",
+        'req.headers.cookie',
       ],
     },
     ...options,

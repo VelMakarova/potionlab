@@ -1,0 +1,326 @@
+.wooden {
+  height: 100%;
+  width: 100%;
+  background-image: url('../assets/dark-wood.webp');
+}
+
+/* Paths are relative to this stylesheet. */
+.pl-theme {
+  --pl-frame: url('./assets/wood-frame.webp');
+  --pl-floral-frame: url('./assets/card-frame-botanical.webp');
+  --pl-paper: url('./assets/parchment.webp');
+  --pl-paper-raged: url('./assets/parchment-ragged.webp');
+  --pl-wood: url('./assets/wood-surface.webp');
+  --pl-sign: url('./assets/shop-sign.webp');
+  --pl-cream: #f5e6c4;
+  --pl-ink: #2b190e;
+  --pl-focus: #ffdd91;
+  color: var(--pl-cream);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Nine-slice: corners stay fixed, straight rails stretch. */
+.pl-frame,
+.pl-panel,
+.pl-floral-frame {
+  border-style: solid;
+  border-color: #6a4023;
+  border-image: var(--pl-frame) 55 / 1 / 0 stretch;
+  min-width: 0;
+  background-clip: padding-box;
+}
+.pl-card {
+  border-style: solid;
+  border-color: #6a4023;
+  border-image: var(--pl-floral-frame) 55 / 1 / 0 stretch;
+  min-width: 0;
+  background-clip: padding-box;
+}
+.pl-frame {
+  border-width: 18px;
+  box-shadow: 0 12px 36px #0009;
+}
+.pl-floral-frame {
+  border-width: 7px;
+  border-image: var(--pl-floral-frame) 55 / 1 / 0 stretch;
+}
+.pl-panel {
+  border-width: 9px;
+  padding: 16px;
+  background-color: rgb(15 11 8 / 48%);
+}
+.pl-panel__title {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+}
+/* Symmetric columns keep the sign centered even with settings at right. */
+.pl-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 440px) minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+.pl-sign {
+  position: relative;
+  top: -5px;
+  grid-column: 2;
+  width: 100%;
+  aspect-ratio: 3;
+  padding: 9% 23% 2%;
+  display: grid;
+  place-items: center;
+  background: var(--pl-sign) center / contain no-repeat;
+  filter: drop-shadow(0 5px 4px #0008);
+}
+.pl-sign__title {
+  margin: 0;
+  color: var(--pl-ink);
+  font-size: clamp(1.45rem, 3vw, 2.65rem);
+  line-height: 1;
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 #fff6;
+}
+.pl-button,
+.pl-select {
+  max-width: 100%;
+  border-radius: 7px;
+  color: var(--pl-ink);
+  font:
+    700 1rem / 1.2 Georgia,
+    'Times New Roman',
+    serif;
+}
+
+.pl-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 16px;
+  border: 3px solid #704522;
+  gap: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+.pl-raged {
+  background: var(--pl-paper-raged) center / 100% 100% no-repeat #704522;
+}
+.pl-icon {
+  flex-shrink: 0;
+  border: none;
+}
+.pl-icon:hover {
+  transform: scale(1.1);
+}
+.pl-settings-gear {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url('./assets/gear-wood.webp') center / contain no-repeat;
+}
+.pl-close {
+  width: 20px;
+  height: 20px;
+  background: url('./assets/wood-close-256.webp') center / contain no-repeat;
+}
+.pl-tick {
+  width: 20px;
+  height: 20px;
+  background: url('./assets/wood-check-256.webp') center / contain no-repeat;
+}
+.pl-add {
+  width: 20px;
+  height: 20px;
+  background: url('./assets/wood-plus-256.webp') center / contain no-repeat;
+}
+.pl-info {
+  border: none;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url('./assets/wood-question-256.webp') center / contain no-repeat
+    transparent;
+}
+.pl-button:hover:not(:disabled):not([aria-disabled='true']) {
+  transform: scale(1.01);
+}
+.pl-button:active:not(:disabled):not([aria-disabled='true']) {
+  //transform: translateY(1px);
+}
+.pl-button:focus-visible,
+.pl-select:focus-visible {
+  outline: 1px solid var(--pl-focus);
+  outline-offset: 2px;
+}
+.pl-button:disabled,
+.pl-button[aria-disabled='true'],
+.pl-select:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  box-shadow: inset 0 1px 3px #0005;
+}
+.pl-button--settings {
+  grid-column: 3;
+  justify-self: end;
+}
+.pl-button--brew {
+  min-width: 220px;
+  min-height: 52px;
+  font-size: 1.15rem;
+}
+.pl-button--wood {
+  color: var(--pl-cream);
+  border-color: #9b6c3c #4a2b18 #321b10 #80552f;
+  background-image: linear-gradient(#6b3c1a55, #140b0780), var(--pl-wood);
+  text-shadow: 0 1px 2px #000;
+}
+.pl-button--icon {
+  width: 44px;
+  padding: 0;
+  flex: 0 0 44px;
+  font-size: 1.4rem;
+}
+.pl-button--round {
+  border-radius: 50%;
+}
+.pl-button svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+}
+.pl-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 42px;
+  padding: 3px 12px;
+  border: 2px solid #704522;
+  background: var(--pl-paper-raged) center / 100% 100% no-repeat #704522;
+}
+.pl-select option {
+  color: var(--pl-ink);
+  background-color: #ead2a7;
+}
+.pl-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.pl-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  justify-content: center;
+  border-width: 7px;
+  padding: 10px;
+  background-color: #342416;
+  background-image: linear-gradient(#100a0755, #100a0799), var(--pl-wood);
+  background-size:
+    auto,
+    256px 256px;
+  box-shadow: 0 5px 12px #0007;
+}
+.pl-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  justify-self: center;
+  /* Add image-rendering: pixelated only for integer pixel-art scaling. */
+}
+.pl-card__name {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  margin: 0;
+  padding: 6px 8px;
+  background: var(--pl-paper-raged) center / 100% 100% no-repeat;
+  color: var(--pl-ink);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow:
+    inset 0 0 6px #75441c44,
+    0 2px 3px #0005;
+}
+.pl-card__actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.pl-card--selected {
+  outline: 2px solid #eac780;
+  outline-offset: -2px;
+}
+@media (max-width: 700px) {
+  .pl-frame {
+    border-width: 12px;
+    padding: 10px;
+  }
+  .pl-panel {
+    border-width: 7px;
+    padding: 12px;
+  }
+  .pl-header {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pl-sign {
+    grid-column: 1;
+    width: min(100%, 380px);
+    justify-self: center;
+  }
+  .pl-button--settings {
+    grid-column: 1;
+    justify-self: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-button {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .pl-frame,
+  .pl-panel,
+  .pl-card {
+    border-image: none;
+    border-color: CanvasText;
+  }
+  .pl-button,
+  .pl-select {
+    background: Canvas;
+    color: ButtonText;
+    border-color: ButtonText;
+  }
+  .pl-sign {
+    background: Canvas;
+    filter: none;
+  }
+  .pl-sign__title {
+    color: CanvasText;
+    text-shadow: none;
+  }
+}
+
+.pl-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  overflow: auto;
+  color: var(--pl-cream);
+  background-color: #342416;
+  background-image: linear-gradient(#100a0755, #100a0799), var(--pl-wood);
+  background-size:
+    auto,
+    256px 256px;
+  box-shadow: 0 12px 36px #0009;
+}
+.pl-modal::backdrop {
+  background: #0009;
+}

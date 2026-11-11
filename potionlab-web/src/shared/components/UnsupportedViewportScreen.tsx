@@ -1,4 +1,4 @@
-import { copy } from "../i18n";
+import { copy } from '../i18n';
 export function UnsupportedViewportScreen() {
   return (
     <main className="unsupported" lang="uk">

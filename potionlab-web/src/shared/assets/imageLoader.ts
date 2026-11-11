@@ -19,10 +19,10 @@ export function preloadImage(url: string): Promise<boolean> {
     const timer = setTimeout(() => finish(false), 15000);
     img.onerror = () => finish(false);
     img.onload = () => {
-      if (typeof img.decode === "function")
+      if (typeof img.decode === 'function')
         img.decode().then(
           () => finish(true),
-          () => finish(false),
+          () => finish(false)
         );
       else finish(true);
     };

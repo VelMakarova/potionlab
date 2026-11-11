@@ -1,7 +1,7 @@
-import type { Language } from "../i18n/types";
-import { apiBaseUrl } from "./config";
-import { HttpError } from "./errors";
-import { parseIngredients } from "./parsers";
+import type { Language } from '../i18n/types';
+import { apiBaseUrl } from './config';
+import { HttpError } from './errors';
+import { parseIngredients } from './parsers';
 export async function loadIngredients(language: Language, signal: AbortSignal) {
   const response = await fetch(`${apiBaseUrl}/ingredients?lang=${language}`, {
     signal,

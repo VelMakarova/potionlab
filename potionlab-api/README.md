@@ -43,17 +43,17 @@ curl -X POST http://localhost:3000/internal/ai/check \
 Остаточне дотримання всіх квот забезпечує Google.
 Таймаут Google-запиту — 45 секунд (змінна `GEMINI_TIMEOUT_MS`, допустимо 1000–120000 мс); автоматичних повторів немає.
 
-| HTTP | code | Значення |
-| --- | --- | --- |
-| 200 | — | Генерація відповіла, квота була доступна для цього запиту |
-| 401 | UNAUTHORIZED | Відсутній або неправильний службовий токен |
-| 503 | AI_SERVICE_TOKEN_NOT_CONFIGURED / AI_NOT_CONFIGURED | Відсутня локальна конфігурація |
-| 429 | AI_CHECK_COOLDOWN | Локальна пауза, дивись `Retry-After` |
-| 429 | AI_QUOTA_OR_RATE_LIMIT | Google відхилив запит через квоту або rate limit |
-| 502 | AI_ACCESS_DENIED | Google відхилив ключ, доступ, billing або параметри запиту |
-| 502 | AI_MODEL_NOT_FOUND | Модель недоступна або ID неправильний |
-| 502 | AI_EMPTY_RESPONSE / AI_INVALID_RESPONSE / AI_NETWORK_ERROR / AI_PROVIDER_UNAVAILABLE | Немає текстової відповіді або помилка провайдера/мережі |
-| 504 | AI_TIMEOUT | Google не відповів вчасно |
+| HTTP | code                                                                                 | Значення                                                   |
+| ---- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| 200  | —                                                                                    | Генерація відповіла, квота була доступна для цього запиту  |
+| 401  | UNAUTHORIZED                                                                         | Відсутній або неправильний службовий токен                 |
+| 503  | AI_SERVICE_TOKEN_NOT_CONFIGURED / AI_NOT_CONFIGURED                                  | Відсутня локальна конфігурація                             |
+| 429  | AI_CHECK_COOLDOWN                                                                    | Локальна пауза, дивись `Retry-After`                       |
+| 429  | AI_QUOTA_OR_RATE_LIMIT                                                               | Google відхилив запит через квоту або rate limit           |
+| 502  | AI_ACCESS_DENIED                                                                     | Google відхилив ключ, доступ, billing або параметри запиту |
+| 502  | AI_MODEL_NOT_FOUND                                                                   | Модель недоступна або ID неправильний                      |
+| 502  | AI_EMPTY_RESPONSE / AI_INVALID_RESPONSE / AI_NETWORK_ERROR / AI_PROVIDER_UNAVAILABLE | Немає текстової відповіді або помилка провайдера/мережі    |
+| 504  | AI_TIMEOUT                                                                           | Google не відповів вчасно                                  |
 
 Free tier підходить для початкових тестів, але скріншот ключа не гарантує доступності генерації.
 Службова ручка незалежна від `/brew`: варіння поки використовує текстову заглушку замість AI.
@@ -85,11 +85,11 @@ npm run start:prod
 
 Знімок із AI Studio від 25.10.2026 для `gemini-3.1-flash-lite`, Free tier:
 
-| Змінна | Значення | Значення показника |
-| --- | --- | --- |
-| `GEMINI_REQUESTS_PER_MINUTE` | 15 | Запити за хвилину |
-| `GEMINI_INPUT_TOKENS_PER_MINUTE` | 250000 | Вхідні токени за хвилину |
-| `GEMINI_REQUESTS_PER_DAY` | 500 | Запити за добу |
+| Змінна                           | Значення | Значення показника       |
+| -------------------------------- | -------- | ------------------------ |
+| `GEMINI_REQUESTS_PER_MINUTE`     | 15       | Запити за хвилину        |
+| `GEMINI_INPUT_TOKENS_PER_MINUTE` | 250000   | Вхідні токени за хвилину |
+| `GEMINI_REQUESTS_PER_DAY`        | 500      | Запити за добу           |
 
 Ці значення вже є типовими; додавати їх у наявний `.env` необов'язково.
 Відповідь ручки містить `configuredLimits` із `source: "configuration"` — це налаштовані

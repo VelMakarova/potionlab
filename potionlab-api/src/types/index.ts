@@ -1,27 +1,21 @@
-export type Element =
-  | "fire"
-  | "water"
-  | "air"
-  | "earth"
-  | "dark"
-  | "light";
+export type Element = 'fire' | 'water' | 'air' | 'earth' | 'dark' | 'light';
 
 export type Property =
-  | "heat"
-  | "power"
-  | "protection"
-  | "transformation"
-  | "poison"
-  | "purification"
-  | "concealment"
-  | "freezing"
-  | "mobility"
-  | "lightning"
-  | "growth"
-  | "preservation"
-  | "healing"
-  | "divination"
-  | "necromancy";
+  | 'heat'
+  | 'power'
+  | 'protection'
+  | 'transformation'
+  | 'poison'
+  | 'purification'
+  | 'concealment'
+  | 'freezing'
+  | 'mobility'
+  | 'lightning'
+  | 'growth'
+  | 'preservation'
+  | 'healing'
+  | 'divination'
+  | 'necromancy';
 
 export type IngredientAssets = {
   full: string;

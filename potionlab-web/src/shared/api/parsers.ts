@@ -1,9 +1,9 @@
-import { elements, type Ingredient } from "../types/ingredient";
-import type { BrewResult } from "../types/brewing";
-import { InvalidResponseError } from "./errors";
+import { elements, type Ingredient } from '../types/ingredient';
+import type { BrewResult } from '../types/brewing';
+import { InvalidResponseError } from './errors';
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
 function isIngredient(value: unknown): value is Ingredient {
@@ -12,14 +12,14 @@ function isIngredient(value: unknown): value is Ingredient {
   const assets = value.assets;
 
   return (
-    typeof value.id === "string" &&
-    typeof value.name === "string" &&
-    typeof value.description === "string" &&
+    typeof value.id === 'string' &&
+    typeof value.name === 'string' &&
+    typeof value.description === 'string' &&
     elements.some((element) => element === value.element) &&
     Array.isArray(value.properties) &&
-    value.properties.every((property) => typeof property === "string") &&
-    ["full", "thumb64", "thumb128"].every(
-      (key) => typeof assets[key] === "string",
+    value.properties.every((property) => typeof property === 'string') &&
+    ['full', 'thumb64', 'thumb128'].every(
+      (key) => typeof assets[key] === 'string'
     )
   );
 }
@@ -42,22 +42,22 @@ export function parseBrewResult(value: unknown): BrewResult {
   const status = value.status;
 
   if (
-    status === "no_magic" ||
-    status === "explosion" ||
-    status === "cracked" ||
-    status === "runaway" ||
-    status === "useless"
+    status === 'no_magic' ||
+    status === 'explosion' ||
+    status === 'cracked' ||
+    status === 'runaway' ||
+    status === 'useless'
   )
     return { status };
 
   if (
-    status === "brewed" &&
-    typeof value.description === "string" &&
+    status === 'brewed' &&
+    typeof value.description === 'string' &&
     value.description.trim() &&
     isRecord(value.properties) &&
     Object.keys(value.properties).length &&
     Object.values(value.properties).every(
-      (strength) => Number.isInteger(strength) && Number(strength) > 0,
+      (strength) => Number.isInteger(strength) && Number(strength) > 0
     )
   ) {
     return { status, description: value.description };

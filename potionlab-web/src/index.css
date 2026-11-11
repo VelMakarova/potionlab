@@ -1,17 +1,29 @@
-* {
+@import './styles/main.css';
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
+html,
 body {
-  margin: 0;
+  height: 100dvh;
+  color: white;
+  font-size: 14px;
 }
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 [hidden] {
   display: none !important;
 }
-h1,
-h2,
-p {
-  margin: 0;
-}
+
 img {
   display: block;
   max-width: 100%;
@@ -20,4 +32,7 @@ img {
 button,
 select {
   max-width: 100%;
+}
+.text-center {
+  text-align: center;
 }

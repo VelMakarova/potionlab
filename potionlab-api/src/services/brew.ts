@@ -3,13 +3,13 @@ import {
   type BrewingIngredient,
   type PropertyStrengths,
   type RuleEngineResult,
-} from "../domain/brewing.js";
-import type { Language } from "../hooks/language.js";
-import { getIngredientById } from "./ingredients.js";
+} from '../domain/brewing.js';
+import type { Language } from '../hooks/language.js';
+import { getIngredientById } from './ingredients.js';
 
 export type BrewResult =
-  | Exclude<RuleEngineResult, { status: "ready_for_generation" }>
-  | { status: "brewed"; properties: PropertyStrengths; description: string };
+  | Exclude<RuleEngineResult, { status: 'ready_for_generation' }>
+  | { status: 'brewed'; properties: PropertyStrengths; description: string };
 
 interface GenerationInput {
   ingredients: readonly BrewingIngredient[];
@@ -18,28 +18,35 @@ interface GenerationInput {
 }
 
 interface BrewDependencies {
-  findIngredient: (id: string, language: Language) => BrewingIngredient | undefined;
+  findIngredient: (
+    id: string,
+    language: Language
+  ) => BrewingIngredient | undefined;
   generateDescription: (input: GenerationInput) => Promise<string>;
 }
 
 export class UnknownIngredientError extends Error {
-  readonly code = "UNKNOWN_INGREDIENT_ID";
+  readonly code = 'UNKNOWN_INGREDIENT_ID';
 
   constructor(public readonly ingredientId: string) {
     super(`Unknown ingredient ID: ${ingredientId}`);
-    this.name = "UnknownIngredientError";
+    this.name = 'UnknownIngredientError';
   }
 }
 
 // TODO: Replace this stub with AI generation. It makes no network requests.
-async function mockGenerateDescription({ language }: GenerationInput): Promise<string> {
-  return language === "ua" ? "Тут буде текст від ШІ" : "AI-generated text will appear here";
+async function mockGenerateDescription({
+  language,
+}: GenerationInput): Promise<string> {
+  return language === 'ua'
+    ? 'Тут буде текст від ШІ'
+    : 'AI-generated text will appear here';
 }
 
 export async function brewPotion(
   ingredientIds: readonly string[],
-  language: Language = "en",
-  dependencies: Partial<BrewDependencies> = {},
+  language: Language = 'en',
+  dependencies: Partial<BrewDependencies> = {}
 ): Promise<BrewResult> {
   const findIngredient = dependencies.findIngredient ?? getIngredientById;
   const ingredients = ingredientIds.map((id) => {
@@ -49,9 +56,10 @@ export async function brewPotion(
   });
 
   const result = evaluateBrew(ingredients);
-  if (result.status !== "ready_for_generation") return result;
+  if (result.status !== 'ready_for_generation') return result;
 
-  const generateDescription = dependencies.generateDescription ?? mockGenerateDescription;
+  const generateDescription =
+    dependencies.generateDescription ?? mockGenerateDescription;
   const description = await generateDescription({
     ingredients,
     // The service retains its canonical calculation even if a generator changes its input.
@@ -59,5 +67,5 @@ export async function brewPotion(
     language,
   });
 
-  return { status: "brewed", properties: result.properties, description };
+  return { status: 'brewed', properties: result.properties, description };
 }

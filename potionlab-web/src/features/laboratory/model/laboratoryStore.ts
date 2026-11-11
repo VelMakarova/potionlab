@@ -1,18 +1,18 @@
-import { createStore } from "zustand/vanilla";
-import { loadLaboratory } from "../services/loadLaboratory";
-import { brewPotion, classifyBrewError } from "../services/brewPotion";
-import { validateSelection } from "../rules/validateSelection";
+import { createStore } from 'zustand/vanilla';
+import { loadLaboratory } from '../services/loadLaboratory';
+import { brewPotion, classifyBrewError } from '../services/brewPotion';
+import { validateSelection } from '../rules/validateSelection';
 import {
   catalogSnapshot,
   selectCanAddIngredient,
   selectCanBrew,
   selectCatalogReady,
   selectEditingAllowed,
-} from "./selectors";
-import type { BrewAttempt, LaboratoryStore } from "./types";
+} from './selectors';
+import type { BrewAttempt, LaboratoryStore } from './types';
 
 export function createLaboratoryStore(
-  dependencies = { load: loadLaboratory, brew: brewPotion },
+  dependencies = { load: loadLaboratory, brew: brewPotion }
 ) {
   let catalogController: AbortController | null = null;
   let brewController: AbortController | null = null;
@@ -28,63 +28,63 @@ export function createLaboratoryStore(
       const language = get().language;
       set((state) => ({
         catalog: {
-          status: "loading",
+          status: 'loading',
           previous: catalogSnapshot(state.catalog),
         },
       }));
       try {
         const catalog = await dependencies.load(language, controller.signal);
         if (version === catalogVersion && !controller.signal.aborted)
-          set({ catalog: { status: "ready", ...catalog } });
+          set({ catalog: { status: 'ready', ...catalog } });
       } catch {
         if (version === catalogVersion && !controller.signal.aborted) {
           set((state) => ({
             catalog: {
-              status: "error",
+              status: 'error',
               previous: catalogSnapshot(state.catalog),
-              error: "unavailable",
+              error: 'unavailable',
             },
           }));
         }
       }
     }
     return {
-      language: "ua",
-      catalog: { status: "idle" },
+      language: 'ua',
+      catalog: { status: 'idle' },
       selectedIds: [],
-      brewing: { phase: "editing", error: null },
+      brewing: { phase: 'editing', error: null },
       async initialize() {
         if (!selectCatalogReady(get())) await load();
       },
       async retryCatalog() {
-        if (get().catalog.status === "error" && selectEditingAllowed(get()))
+        if (get().catalog.status === 'error' && selectEditingAllowed(get()))
           await load();
       },
       async changeLanguage(language) {
         if (!selectEditingAllowed(get()) || language === get().language) return;
-        set({ language, brewing: { phase: "editing", error: null } });
+        set({ language, brewing: { phase: 'editing', error: null } });
         await load();
       },
       addIngredient(id) {
         if (!selectCanAddIngredient(get(), id)) return;
         set((state) => ({
           selectedIds: [...state.selectedIds, id],
-          brewing: { phase: "editing", error: null },
+          brewing: { phase: 'editing', error: null },
         }));
       },
       removeIngredient(id) {
         if (!selectEditingAllowed(get()) || !selectCatalogReady(get())) return;
         set((state) => ({
           selectedIds: state.selectedIds.filter((value) => value !== id),
-          brewing: { phase: "editing", error: null },
+          brewing: { phase: 'editing', error: null },
         }));
       },
       async brew() {
         const state = get();
-        if (!selectCanBrew(state) || state.catalog.status !== "ready") return;
+        if (!selectCanBrew(state) || state.catalog.status !== 'ready') return;
         const items = validateSelection(
           state.selectedIds,
-          state.catalog.data.byId,
+          state.catalog.data.byId
         );
         if (!items) return;
         const attempt: BrewAttempt = {
@@ -92,7 +92,7 @@ export function createLaboratoryStore(
           language: state.language,
         };
         // The synchronous transition guards repeated calls before any network work begins.
-        set({ brewing: { phase: "brewing", attempt } });
+        set({ brewing: { phase: 'brewing', attempt } });
         const version = ++brewVersion;
         const controller = new AbortController();
         brewController = controller;
@@ -106,16 +106,16 @@ export function createLaboratoryStore(
           const result = await dependencies.brew(
             attempt,
             items,
-            controller.signal,
+            controller.signal
           );
           if (version !== brewVersion) return;
-          if (controller.signal.aborted) throw new Error("Request aborted");
-          set({ brewing: { phase: "complete", attempt, result } });
+          if (controller.signal.aborted) throw new Error('Request aborted');
+          set({ brewing: { phase: 'complete', attempt, result } });
         } catch (error) {
           if (version === brewVersion)
             set({
               brewing: {
-                phase: "editing",
+                phase: 'editing',
                 error: classifyBrewError(error, timedOut),
               },
             });
@@ -128,8 +128,8 @@ export function createLaboratoryStore(
         }
       },
       startNewBrew() {
-        if (get().brewing.phase !== "complete") return;
-        set({ selectedIds: [], brewing: { phase: "editing", error: null } });
+        if (get().brewing.phase !== 'complete') return;
+        set({ selectedIds: [], brewing: { phase: 'editing', error: null } });
       },
     };
   });
@@ -147,4 +147,4 @@ export function createLaboratoryStore(
 }
 export type LaboratoryStoreApi = ReturnType<
   typeof createLaboratoryStore
->["store"];
+>['store'];

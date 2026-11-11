@@ -1,16 +1,16 @@
-import { useShallow } from "zustand/react/shallow";
-import { assetUrl } from "../../../shared/assets/assetUrl";
-import { Modal } from "../../../shared/components/Modal";
-import { Picture } from "../../../shared/components/Picture";
-import { useImageResource } from "../../../shared/hooks/useImageResource";
-import { copy } from "../../../shared/i18n";
-import { label } from "../../../shared/i18n/labels";
+import { useShallow } from 'zustand/react/shallow';
+import { assetUrl } from '../../../shared/assets/assetUrl';
+import { Modal } from '../../../shared/components/Modal';
+import { Picture } from '../../../shared/components/Picture';
+import { useImageResource } from '../../../shared/hooks/useImageResource';
+import { copy } from '../../../shared/i18n';
+import { label } from '../../../shared/i18n/labels';
 import {
   selectCanAddIngredient,
   selectFailedImages,
   selectIngredient,
-} from "../model/selectors";
-import { useLaboratoryStore } from "../model/useLaboratoryStore";
+} from '../model/selectors';
+import { useLaboratoryStore } from '../model/useLaboratoryStore';
 export function IngredientInfoModal({
   id,
   close,
@@ -26,15 +26,20 @@ export function IngredientInfoModal({
       canAdd: selectCanAddIngredient(state, id),
       add: state.addIngredient,
       failed: selectFailedImages(state),
-    })),
+    }))
   );
-  const src = item ? assetUrl(item.assets.full) : "";
+  const src = item ? assetUrl(item.assets.full) : '';
   const status = useImageResource(src, 480);
   if (!item) return null;
   const t = copy[language];
   return (
-    <Modal title={item.name} closeLabel={t.close} close={close}>
-      {status === "loading" ? (
+    <Modal
+      className="pl-floral-frame"
+      title={item.name}
+      closeLabel={t.close}
+      close={close}
+    >
+      {status === 'loading' ? (
         <p role="status">{t.loading}</p>
       ) : (
         <div className="ingredient-info">
@@ -43,19 +48,23 @@ export function IngredientInfoModal({
             src={src}
             size={480}
             alt={item.name}
-            failed={status === "failed" ? { ...failed, [src]: true } : failed}
+            failed={status === 'failed' ? { ...failed, [src]: true } : failed}
           />
           <p>{item.description}</p>
           <p>
             {t.element}: {label(item.element, language)}
           </p>
           <p>
-            {t.properties}:{" "}
+            {t.properties}:{' '}
             {item.properties
               .map((property) => label(property, language))
-              .join(", ")}
+              .join(', ')}
           </p>
-          <button disabled={!canAdd} onClick={() => add(id)}>
+          <button
+            className="pl-button pl-raged"
+            disabled={!canAdd}
+            onClick={() => add(id)}
+          >
             {selected ? t.selected : t.add}
           </button>
         </div>

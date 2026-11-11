@@ -1,10 +1,10 @@
 export const elements = [
-  "fire",
-  "water",
-  "air",
-  "earth",
-  "light",
-  "dark",
+  'fire',
+  'water',
+  'air',
+  'earth',
+  'light',
+  'dark',
 ] as const;
 export type Element = (typeof elements)[number];
 export type IngredientId = string;

@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useLaboratoryStore } from "./model/useLaboratoryStore";
-import { selectCatalogReady } from "./model/selectors";
-import { LaboratoryLayout } from "./LaboratoryLayout";
-import { AppHeader } from "./components/AppHeader";
-import { StartupScreen } from "./components/StartupScreen";
-import { IngredientCatalog } from "./components/IngredientCatalog";
-import { IngredientInfoModal } from "./components/IngredientInfoModal";
-import { BrewingWorkspace } from "./components/BrewingWorkspace";
-import { SettingsModal } from "./components/SettingsModal";
+import { useState } from 'react';
+import { useLaboratoryStore } from './model/useLaboratoryStore';
+import { selectCatalogReady } from './model/selectors';
+import { LaboratoryLayout } from './LaboratoryLayout';
+import { AppHeader } from './components/AppHeader';
+import { StartupScreen } from './components/StartupScreen';
+import { IngredientCatalog } from './components/IngredientCatalog';
+import { IngredientInfoModal } from './components/IngredientInfoModal';
+import { BrewingWorkspace } from './components/BrewingWorkspace';
+import { SettingsModal } from './components/SettingsModal';
 
 export function LaboratoryPage() {
   const [infoId, setInfoId] = useState<string | null>(null);
@@ -17,7 +17,7 @@ export function LaboratoryPage() {
   const ready = useLaboratoryStore(selectCatalogReady);
 
   return (
-    <main className="app-shell" lang={language === "ua" ? "uk" : "en"}>
+    <main className="app-shell pl-frame" lang={language === 'ua' ? 'uk' : 'en'}>
       <AppHeader openSettings={() => setSettingsOpen(true)} />
 
       {ready ? (

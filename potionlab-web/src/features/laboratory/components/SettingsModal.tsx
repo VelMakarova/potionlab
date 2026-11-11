@@ -1,9 +1,9 @@
-import { useShallow } from "zustand/react/shallow";
-import { Modal } from "../../../shared/components/Modal";
-import { copy } from "../../../shared/i18n";
-import type { Language } from "../../../shared/i18n/types";
-import { selectEditingAllowed } from "../model/selectors";
-import { useLaboratoryStore } from "../model/useLaboratoryStore";
+import { useShallow } from 'zustand/react/shallow';
+import { Modal } from '../../../shared/components/Modal';
+import { copy } from '../../../shared/i18n';
+import type { Language } from '../../../shared/i18n/types';
+import { selectEditingAllowed } from '../model/selectors';
+import { useLaboratoryStore } from '../model/useLaboratoryStore';
 export function SettingsModal({
   close,
   languageChanged,
@@ -16,7 +16,7 @@ export function SettingsModal({
       language: state.language,
       editable: selectEditingAllowed(state),
       changeLanguage: state.changeLanguage,
-    })),
+    }))
   );
   const t = copy[language];
   function change(value: Language) {
@@ -25,10 +25,16 @@ export function SettingsModal({
     void changeLanguage(value);
   }
   return (
-    <Modal title={t.settings} closeLabel={t.close} close={close}>
-      <label>
-        {t.language}{" "}
+    <Modal
+      title={t.settings}
+      closeLabel={t.close}
+      close={close}
+      className={'pl-floral-frame'}
+    >
+      <label className="pl-field">
+        {t.language}{' '}
         <select
+          className="pl-select"
           disabled={!editable}
           value={language}
           onChange={(event) => change(event.target.value as Language)}
