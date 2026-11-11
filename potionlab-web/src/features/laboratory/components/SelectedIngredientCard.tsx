@@ -4,6 +4,7 @@ import { copy } from '../../../shared/i18n';
 import type { Language } from '../../../shared/i18n/types';
 import type { Ingredient } from '../../../shared/types/ingredient';
 import type { FailedImages } from '../model/types';
+
 export function SelectedIngredientCard({
   id,
   item,
@@ -20,6 +21,7 @@ export function SelectedIngredientCard({
   remove: (id: string) => void;
 }) {
   const t = copy[language];
+
   return (
     <li
       className={`selected-ingredient-card pl-floral-frame pl-wood-surface ${item ? 'gap-1' : ''}`}

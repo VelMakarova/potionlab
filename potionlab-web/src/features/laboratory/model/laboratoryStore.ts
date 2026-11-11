@@ -17,6 +17,7 @@ const LANGUAGE_STORAGE_KEY = 'language';
 function readLanguage(): Language {
   try {
     const language = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
     if (language === 'en' || language === 'ua') return language;
   } catch {
     // Storage may be unavailable in restricted browser contexts.
@@ -32,21 +33,27 @@ export function createLaboratoryStore(
   let catalogVersion = 0;
   let brewVersion = 0;
   let brewTimer: ReturnType<typeof setTimeout> | undefined;
+
   const store = createStore<LaboratoryStore>()((set, get) => {
     async function load() {
       const version = ++catalogVersion;
+
       catalogController?.abort();
       const controller = new AbortController();
+
       catalogController = controller;
       const language = get().language;
+
       set((state) => ({
         catalog: {
           status: 'loading',
           previous: catalogSnapshot(state.catalog),
         },
       }));
+
       try {
         const catalog = await dependencies.load(language, controller.signal);
+
         if (version === catalogVersion && !controller.signal.aborted)
           set({ catalog: { status: 'ready', ...catalog } });
       } catch {
@@ -61,6 +68,7 @@ export function createLaboratoryStore(
         }
       }
     }
+
     return {
       language: readLanguage(),
       catalog: { status: 'idle' },
@@ -99,26 +107,31 @@ export function createLaboratoryStore(
       },
       async brew() {
         const state = get();
+
         if (!selectCanBrew(state) || state.catalog.status !== 'ready') return;
         const items = validateSelection(
           state.selectedIds,
           state.catalog.data.byId
         );
+
         if (!items) return;
         const attempt: BrewAttempt = {
           ingredientIds: [items[0].id, items[1].id, items[2].id],
           language: state.language,
         };
+
         // The synchronous transition guards repeated calls before any network work begins.
         set({ brewing: { phase: 'brewing', attempt } });
         const version = ++brewVersion;
         const controller = new AbortController();
+
         brewController = controller;
         let timedOut = false;
         const timer = setTimeout(() => {
           timedOut = true;
           controller.abort();
         }, 60000);
+
         brewTimer = timer;
         try {
           const result = await dependencies.brew(
@@ -126,6 +139,7 @@ export function createLaboratoryStore(
             items,
             controller.signal
           );
+
           if (version !== brewVersion) return;
           if (controller.signal.aborted) throw new Error('Request aborted');
           set({ brewing: { phase: 'complete', attempt, result } });
@@ -151,6 +165,7 @@ export function createLaboratoryStore(
       },
     };
   });
+
   function cancelPending() {
     catalogVersion++;
     brewVersion++;
@@ -163,6 +178,7 @@ export function createLaboratoryStore(
   }
   return { store, cancelPending };
 }
+
 export type LaboratoryStoreApi = ReturnType<
   typeof createLaboratoryStore
 >['store'];

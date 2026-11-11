@@ -12,6 +12,7 @@ describe('brew contract', () => {
         properties: { healing: 3 },
       }),
     });
+
     vi.stubGlobal('fetch', fetch);
     expect(
       await requestBrew(['a', 'b', 'c'], 'ua', new AbortController().signal)

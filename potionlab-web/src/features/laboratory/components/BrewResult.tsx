@@ -9,6 +9,7 @@ const errorCopy = {
   invalid_response: 'error',
   network: 'error',
 } as const satisfies Record<BrewError, keyof typeof copy.ua>;
+
 export function BrewResult({
   brewing,
   language,
@@ -18,6 +19,7 @@ export function BrewResult({
 }) {
   const t = copy[language];
   let text = t.emptyResult;
+
   if (brewing.phase === 'brewing') text = t.brewing;
   if (brewing.phase === 'complete')
     text =
@@ -25,6 +27,7 @@ export function BrewResult({
         ? brewing.result.description
         : t[brewing.result.status];
   const error = brewing.phase === 'editing' ? brewing.error : null;
+
   return (
     <section
       className="result pl-frame pl-panel-background"

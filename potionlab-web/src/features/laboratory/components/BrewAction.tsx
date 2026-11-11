@@ -24,6 +24,7 @@ export function BrewAction({ newCycle }: { newCycle: () => void }) {
       : brewing.error
         ? t.retry
         : t.brew;
+
   function activate() {
     if (complete) {
       reset();

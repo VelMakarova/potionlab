@@ -6,6 +6,7 @@ import { label } from '../../../shared/i18n/labels';
 import { selectVisibleIngredientIds } from '../model/selectors';
 import { useLaboratoryStore } from '../model/useLaboratoryStore';
 import { IngredientCard } from './IngredientCard';
+
 export function IngredientCatalog({
   openInfo,
 }: {
@@ -17,6 +18,7 @@ export function IngredientCatalog({
     useShallow((state) => selectVisibleIngredientIds(state, filter))
   );
   const t = copy[language];
+
   return (
     <section
       className="catalog pl-frame pl-panel-background"

@@ -7,6 +7,7 @@ type ModalProps = {
   children: ReactNode;
   className: string;
 };
+
 export function Modal({
   title,
   closeLabel,
@@ -19,7 +20,9 @@ export function Modal({
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     const element = dialog.current!;
+
     element.showModal();
+
     return () => {
       element.close();
       previous?.focus();

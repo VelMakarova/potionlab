@@ -17,6 +17,7 @@ const items: Ingredient[] = ['fire', 'earth', 'water', 'light'].map(
     assets: { full: `full-${i}`, thumb64: `64-${i}`, thumb128: `128-${i}` },
   })
 );
+
 function snapshot(language: Language) {
   return {
     data: {
@@ -34,6 +35,7 @@ function deferred<T>() {
     resolve = res;
     reject = rej;
   });
+
   return { promise, resolve, reject };
 }
 function fixture() {
@@ -42,6 +44,7 @@ function fixture() {
     .fn<typeof brewPotion>()
     .mockResolvedValue({ status: 'useless' });
   const session = createLaboratoryStore({ load, brew });
+
   return { ...session, load, brew, actions: () => session.store.getState() };
 }
 beforeEach(() => localStorage.setItem('language', 'ua'));
@@ -59,6 +62,7 @@ describe('language persistence', () => {
   });
   it('restores and persists the selected language', async () => {
     const f = fixture();
+
     expect(f.actions().language).toBe('ua');
     await f.actions().changeLanguage('en');
     expect(localStorage.getItem('language')).toBe('en');
@@ -70,6 +74,7 @@ describe('language persistence', () => {
 describe('laboratory state transitions', () => {
   it('guards catalog availability, duplicates, fourth ingredient, and unresolved ids', async () => {
     const f = fixture();
+
     f.actions().addIngredient('0');
     expect(f.actions().selectedIds).toEqual([]);
     await f.actions().initialize();
@@ -87,11 +92,13 @@ describe('laboratory state transitions', () => {
   it('locks all editing synchronously and captures attempt until reset', async () => {
     const f = fixture();
     const pending = deferred<BrewResult>();
+
     f.brew.mockImplementation(() => pending.promise);
     await f.actions().initialize();
     for (const id of ['0', '1', '2']) f.actions().addIngredient(id);
     const first = f.actions().brew();
     const duplicate = f.actions().brew();
+
     f.actions().removeIngredient('0');
     f.actions().addIngredient('3');
     f.actions().startNewBrew();
@@ -117,6 +124,7 @@ describe('laboratory state transitions', () => {
   });
   it('preserves selection after technical error and allows explicit retry', async () => {
     const f = fixture();
+
     f.brew.mockRejectedValueOnce(new HttpError(429));
     await f.actions().initialize();
     for (const id of ['0', '1', '2']) f.actions().addIngredient(id);
@@ -134,11 +142,14 @@ describe('laboratory state transitions', () => {
   });
   it('ignores obsolete catalog responses and preserves selected ids across languages', async () => {
     const f = fixture();
+
     await f.actions().initialize();
     f.actions().addIngredient('0');
     const old = deferred<ReturnType<typeof snapshot>>();
+
     f.load.mockImplementationOnce(() => old.promise);
     const en = f.actions().changeLanguage('en');
+
     expect(selectCanBrew(f.actions())).toBe(false);
     await f.actions().changeLanguage('ua');
     old.resolve(snapshot('en'));
@@ -152,6 +163,7 @@ describe('laboratory state transitions', () => {
   });
   it('catalog failure requires an explicit retry', async () => {
     const f = fixture();
+
     f.load.mockRejectedValueOnce(new Error('offline'));
     await f.actions().initialize();
     expect(f.actions().catalog.status).toBe('error');
@@ -163,10 +175,12 @@ describe('laboratory state transitions', () => {
   it('cancellation prevents a late brew response changing disposed state', async () => {
     const f = fixture();
     const pending = deferred<BrewResult>();
+
     f.brew.mockImplementation(() => pending.promise);
     await f.actions().initialize();
     for (const id of ['0', '1', '2']) f.actions().addIngredient(id);
     const request = f.actions().brew();
+
     f.cancelPending();
     pending.resolve({ status: 'useless' });
     await request;
@@ -182,9 +196,11 @@ describe('laboratory state transitions', () => {
         })
     );
     const f = createLaboratoryStore({ load, brew });
+
     await f.store.getState().initialize();
     for (const id of ['0', '1', '2']) f.store.getState().addIngredient(id);
     const request = f.store.getState().brew();
+
     await vi.advanceTimersByTimeAsync(60000);
     await request;
     expect(f.store.getState().brewing).toEqual({

@@ -1,4 +1,5 @@
 import type { ua } from './ua';
+
 export const en = {
   filterElement: 'Filter by element',
   all: 'All',

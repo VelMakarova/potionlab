@@ -12,6 +12,7 @@ export function useDesktopViewport() {
       setDesktop(query.matches);
       if (query.matches) setStarted(true);
     };
+
     query.addEventListener('change', change);
     return () => query.removeEventListener('change', change);
   }, []);

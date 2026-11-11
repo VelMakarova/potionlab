@@ -20,6 +20,7 @@ export async function loadLaboratory(
       ])
     ),
   ];
+
   urls.push(
     cauldronPlaceholder,
     placeholder(64),
@@ -29,6 +30,7 @@ export async function loadLaboratory(
   const results = await Promise.all(
     urls.map(async (url) => [url, await preloadImage(url)] as const)
   );
+
   return {
     data: {
       language,

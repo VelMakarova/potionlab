@@ -4,6 +4,7 @@ import { copy } from '../../../shared/i18n';
 import type { Language } from '../../../shared/i18n/types';
 import { selectEditingAllowed } from '../model/selectors';
 import { useLaboratoryStore } from '../model/useLaboratoryStore';
+
 export function SettingsModal({
   close,
   languageChanged,
@@ -19,11 +20,13 @@ export function SettingsModal({
     }))
   );
   const t = copy[language];
+
   function change(value: Language) {
     if (!editable) return;
     languageChanged();
     void changeLanguage(value);
   }
+
   return (
     <Modal
       title={t.settings}

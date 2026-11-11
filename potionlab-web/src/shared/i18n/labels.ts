@@ -1,4 +1,5 @@
 import type { Language } from './types';
+
 const labels: Record<string, [string, string]> = {
   fire: ['Вогонь', 'Fire'],
   water: ['Вода', 'Water'],
@@ -22,5 +23,6 @@ const labels: Record<string, [string, string]> = {
   divination: ['Віщування', 'Divination'],
   necromancy: ['Некромантія', 'Necromancy'],
 };
+
 export const label = (id: string, language: Language) =>
   labels[id]?.[language === 'ua' ? 0 : 1] ?? id;

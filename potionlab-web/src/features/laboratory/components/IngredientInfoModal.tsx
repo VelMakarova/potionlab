@@ -11,6 +11,7 @@ import {
   selectIngredient,
 } from '../model/selectors';
 import { useLaboratoryStore } from '../model/useLaboratoryStore';
+
 export function IngredientInfoModal({
   id,
   close,
@@ -30,8 +31,10 @@ export function IngredientInfoModal({
   );
   const src = item ? assetUrl(item.assets.full) : '';
   const status = useImageResource(src, 480);
+
   if (!item) return null;
   const t = copy[language];
+
   return (
     <Modal
       className="pl-floral-frame"

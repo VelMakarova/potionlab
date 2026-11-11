@@ -24,6 +24,7 @@ export function SelectedIngredients({ children }: { children: ReactNode }) {
       state.selectedIds.map((id) => selectIngredient(state, id))
     )
   );
+
   return (
     <section
       className="selection pl-frame pl-panel-background"

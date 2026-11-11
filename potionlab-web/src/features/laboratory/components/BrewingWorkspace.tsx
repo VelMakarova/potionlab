@@ -14,6 +14,7 @@ export function BrewingWorkspace({ newCycle }: { newCycle: () => void }) {
       failed: selectFailedImages(state),
     }))
   );
+
   return (
     <section className="workspace" aria-label="PotionLab">
       <Cauldron phase={brewing.phase} language={language} failed={failed} />

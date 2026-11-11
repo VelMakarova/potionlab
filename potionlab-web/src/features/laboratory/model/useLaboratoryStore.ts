@@ -6,6 +6,7 @@ export function useLaboratoryStore<T>(
   selector: (state: LaboratoryStore) => T
 ): T {
   const store = useContext(LaboratoryContext);
+
   if (!store) throw new Error('LaboratoryProvider is required');
   return useStore(store, selector);
 }

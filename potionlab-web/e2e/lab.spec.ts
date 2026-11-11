@@ -15,6 +15,7 @@ const png = Buffer.from(
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=',
   'base64'
 );
+
 async function setup(page: Page) {
   await page.route('https://**/*', (route) =>
     route.fulfill({ contentType: 'image/png', body: png })
@@ -34,6 +35,7 @@ const add = (page: Page, index: number) =>
 
 test('selection, local result, locked language and reset', async ({ page }) => {
   let requests = 0;
+
   await page.route('**/api/brew?*', (route) => {
     requests++;
     return route.fulfill({ json: { status: 'useless' } });
@@ -77,6 +79,7 @@ test('pending locks controls, failed request preserves selection and manual retr
   const gate = new Promise<void>((resolve) => {
     release = resolve;
   });
+
   await page.route('**/api/brew?*', async (route) => {
     requests++;
     expect(route.request().postDataJSON()).toEqual({
@@ -135,6 +138,7 @@ test('info modal loads full lazily, add and remove sync with catalog; language k
   page,
 }) => {
   const full: string[] = [];
+
   page.on('request', (request) => {
     if (request.url().includes('/full-')) full.push(request.url());
   });
@@ -144,6 +148,7 @@ test('info modal loads full lazily, add and remove sync with catalog; language k
     .getByRole('button', { name: 'Інформація: Ingredient 0', exact: true })
     .click();
   const modal = page.getByRole('dialog');
+
   await expect(modal.getByText('Елемент: Вогонь')).toBeVisible();
   await modal.getByRole('button', { name: 'Додати', exact: true }).click();
   await expect(
@@ -176,6 +181,7 @@ test('failed image uses placeholder and catalog retry works', async ({
       : route.fulfill({ contentType: 'image/png', body: png })
   );
   let available = false;
+
   await page.route('**/api/ingredients?*', (route) =>
     route.fulfill(available ? { json: catalog } : { status: 500, json: {} })
   );
@@ -209,6 +215,7 @@ for (const width of [1024, 1280, 1440, 1920]) {
     const action = await page
       .getByRole('button', { name: 'Зварити зілля', exact: true })
       .boundingBox();
+
     expect(action!.y + action!.height).toBeLessThanOrEqual(600);
   });
 }
@@ -217,6 +224,7 @@ test('under 1024 shows only future mobile message without fetching catalog', asy
 }) => {
   await page.setViewportSize({ width: 1023, height: 768 });
   let requests = 0;
+
   page.on('request', (request) => {
     if (/\/api\/(ingredients|brew)\?/.test(request.url())) requests++;
   });
@@ -232,8 +240,10 @@ test('startup waits for thumbnails; failed full image still exposes ingredient c
   const gate = new Promise<void>((resolve) => {
     release = resolve;
   });
+
   await page.route('https://**/*', async (route) => {
     const url = route.request().url();
+
     if (url.includes('/full-')) return route.abort();
     if (url.includes('/128-0')) await gate;
     await route.fulfill({ contentType: 'image/png', body: png });
@@ -249,6 +259,7 @@ test('startup waits for thumbnails; failed full image still exposes ingredient c
     .getByRole('button', { name: 'Інформація: Ingredient 0', exact: true })
     .click();
   const modal = page.getByRole('dialog');
+
   await expect(modal.getByText('Ingredient description')).toBeVisible();
   await expect(modal.locator('img')).toHaveAttribute(
     'src',
@@ -262,15 +273,18 @@ test('element filter defaults to all and changes only visible catalog cards', as
   page,
 }) => {
   let catalogRequests = 0;
+
   page.on('request', (request) => {
     if (request.url().includes('/api/ingredients?')) catalogRequests++;
   });
   await setup(page);
   const filter = page.getByRole('combobox', { name: 'Фільтр за елементом' });
+
   await expect(filter).toHaveValue('all');
   await expect(filter.getByRole('option')).toHaveCount(7);
   await expect(page.locator('.ingredient-card')).toHaveCount(60);
   const before = catalogRequests;
+
   await add(page, 0);
   await filter.selectOption('earth');
   await expect(page.locator('.ingredient-card')).toHaveCount(1);

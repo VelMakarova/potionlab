@@ -8,6 +8,7 @@ import {
   selectIngredient,
 } from '../model/selectors';
 import { useLaboratoryStore } from '../model/useLaboratoryStore';
+
 export function IngredientCard({
   id,
   openInfo,
@@ -25,8 +26,10 @@ export function IngredientCard({
       add: state.addIngredient,
     }))
   );
+
   if (!item) return null;
   const t = copy[language];
+
   return (
     <li
       className={`ingredient-card pl-floral-frame pl-wood-surface ${selected ? 'ingredient-card-selected' : ''}`}

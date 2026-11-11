@@ -1,4 +1,5 @@
 const loads = new Map<string, Promise<boolean>>();
+
 // Bound waits include decoding. A stalled asset must not leave the application behind a loader forever.
 export function preloadImage(url: string): Promise<boolean> {
   const cached = loads.get(url);
@@ -17,6 +18,7 @@ export function preloadImage(url: string): Promise<boolean> {
       resolve(success);
     };
     const timer = setTimeout(() => finish(false), 15000);
+
     img.onerror = () => finish(false);
     img.onload = () => {
       if (typeof img.decode === 'function')

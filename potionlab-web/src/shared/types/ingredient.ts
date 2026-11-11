@@ -6,8 +6,11 @@ export const elements = [
   'light',
   'dark',
 ] as const;
+
 export type Element = (typeof elements)[number];
+
 export type IngredientId = string;
+
 export type Ingredient = {
   id: string;
   name: string;

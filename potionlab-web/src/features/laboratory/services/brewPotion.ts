@@ -10,6 +10,7 @@ export async function brewPotion(
   signal: AbortSignal
 ): Promise<BrewResult> {
   const outcome = evaluateElements(items);
+
   return outcome === 'compatible'
     ? requestBrew(attempt.ingredientIds, attempt.language, signal)
     : { status: outcome };

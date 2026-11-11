@@ -7,6 +7,7 @@ type PictureProps = {
   alt: string;
   failed: Readonly<Record<string, true>>;
 };
+
 export function Picture({ src, size, alt, failed }: PictureProps) {
   const [broken, setBroken] = useState(false);
   const [fallbackBroken, setFallbackBroken] = useState(false);
@@ -26,6 +27,7 @@ export function Picture({ src, size, alt, failed }: PictureProps) {
       </span>
     );
   }
+
   return (
     <img
       src={useFallback ? fallback : src}

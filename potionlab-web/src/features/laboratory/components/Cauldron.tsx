@@ -3,6 +3,7 @@ import { cauldronPlaceholder } from '../../../shared/assets/placeholders';
 import { copy } from '../../../shared/i18n';
 import type { Language } from '../../../shared/i18n/types';
 import type { BrewingState, FailedImages } from '../model/types';
+
 export function Cauldron({
   phase,
   language,
@@ -13,6 +14,7 @@ export function Cauldron({
   failed: FailedImages;
 }) {
   const t = copy[language];
+
   return (
     <section
       className="cauldron pl-frame pl-panel-background"
