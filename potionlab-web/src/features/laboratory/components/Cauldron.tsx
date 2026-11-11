@@ -14,7 +14,10 @@ export function Cauldron({
 }) {
   const t = copy[language];
   return (
-    <section className="cauldron pl-panel" aria-labelledby="cauldron-title">
+    <section
+      className="cauldron pl-frame pl-panel-background"
+      aria-labelledby="cauldron-title"
+    >
       <Picture
         src={cauldronPlaceholder}
         size={160}

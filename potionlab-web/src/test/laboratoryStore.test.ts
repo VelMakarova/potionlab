@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { createLaboratoryStore } from '../features/laboratory/model/laboratoryStore';
 import { selectCanBrew } from '../features/laboratory/model/selectors';
 import type { brewPotion } from '../features/laboratory/services/brewPotion';
@@ -44,7 +44,28 @@ function fixture() {
   const session = createLaboratoryStore({ load, brew });
   return { ...session, load, brew, actions: () => session.store.getState() };
 }
-afterEach(() => vi.useRealTimers());
+beforeEach(() => localStorage.setItem('language', 'ua'));
+afterEach(() => {
+  vi.useRealTimers();
+  localStorage.clear();
+});
+
+describe('language persistence', () => {
+  it('defaults to English for missing or invalid stored language', () => {
+    localStorage.clear();
+    expect(fixture().actions().language).toBe('en');
+    localStorage.setItem('language', 'invalid');
+    expect(fixture().actions().language).toBe('en');
+  });
+  it('restores and persists the selected language', async () => {
+    const f = fixture();
+    expect(f.actions().language).toBe('ua');
+    await f.actions().changeLanguage('en');
+    expect(localStorage.getItem('language')).toBe('en');
+    expect(fixture().actions().language).toBe('en');
+    f.cancelPending();
+  });
+});
 
 describe('laboratory state transitions', () => {
   it('guards catalog availability, duplicates, fourth ingredient, and unresolved ids', async () => {

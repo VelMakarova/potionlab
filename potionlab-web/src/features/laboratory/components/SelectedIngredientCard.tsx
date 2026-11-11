@@ -21,7 +21,9 @@ export function SelectedIngredientCard({
 }) {
   const t = copy[language];
   return (
-    <li className={`pl-card ${item ? 'selected-card-gap' : 'selected-card'}`}>
+    <li
+      className={`selected-ingredient-card pl-floral-frame pl-wood-surface ${item ? 'gap-1' : ''}`}
+    >
       {item ? (
         <>
           <Picture
@@ -33,21 +35,21 @@ export function SelectedIngredientCard({
           />
           <span className="text-center">{item.name}</span>
           <button
-            className="pl-icon pl-close"
+            className="icon icon-button icon-close"
             aria-label={`${t.remove}: ${item.name}`}
             disabled={locked}
             onClick={() => remove(item.id)}
           />
         </>
       ) : id ? (
-        <div className={'pl-card'}>
+        <div className="missing-ingredient-card pl-floral-frame pl-wood-surface">
           <span>{id}</span>
           <button disabled={locked} onClick={() => remove(id)}>
             {t.remove}
           </button>
         </div>
       ) : (
-        <div className="pl-icon pl-info" />
+        <div className="icon icon-info" />
       )}
     </li>
   );

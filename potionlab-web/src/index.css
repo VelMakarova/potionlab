@@ -1,38 +1,7 @@
-@import './styles/main.css';
-
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100dvh;
-  color: white;
-  font-size: 14px;
-}
-
-#root {
-  height: 100%;
-  width: 100%;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  object-fit: contain;
-}
-button,
-select {
-  max-width: 100%;
-}
-.text-center {
-  text-align: center;
-}
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import './styles/theme.css';
+@import './styles/base.css' layer(base);
+@import './styles/components.css' layer(components);
+@import './styles/decorations.css' layer(utilities);
+@import 'tailwindcss/utilities.css' layer(utilities);

@@ -18,12 +18,16 @@ export function IngredientCatalog({
   );
   const t = copy[language];
   return (
-    <section className="catalog pl-panel" aria-labelledby="catalog-title">
-      <div className="catalog-header">
+    <section
+      className="catalog pl-frame pl-panel-background"
+      aria-labelledby="catalog-title"
+    >
+      <div className="flex justify-between">
         <h2 id="catalog-title">{t.ingredients}</h2>
         <select
+          aria-label={t.filterElement}
           name={'elements-select'}
-          className="pl-select"
+          className="paper-select pl-paper-ragged"
           value={filter}
           onChange={(event) => setFilter(event.target.value as Element | 'all')}
         >

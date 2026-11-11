@@ -28,7 +28,7 @@ export function Modal({
 
   return (
     <dialog
-      className={`pl-modal ${className}`}
+      className={`lab-modal pl-wood-surface ${className}`}
       ref={dialog}
       aria-label={title}
       onCancel={(event) => {
@@ -40,7 +40,7 @@ export function Modal({
         <header className="modal-header">
           <h2>{title}</h2>
           <button
-            className="pl-icon pl-close"
+            className="icon icon-button icon-close"
             onClick={close}
             aria-label={closeLabel}
           />

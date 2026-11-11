@@ -26,7 +26,10 @@ export function BrewResult({
         : t[brewing.result.status];
   const error = brewing.phase === 'editing' ? brewing.error : null;
   return (
-    <section className="result pl-panel" aria-labelledby="result-title">
+    <section
+      className="result pl-frame pl-panel-background"
+      aria-labelledby="result-title"
+    >
       <h2 id="result-title">{t.result}</h2>
       <div
         className="result-description"

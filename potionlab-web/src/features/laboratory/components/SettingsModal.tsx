@@ -31,10 +31,10 @@ export function SettingsModal({
       close={close}
       className={'pl-floral-frame'}
     >
-      <label className="pl-field">
+      <label className="flex flex-wrap items-center gap-3">
         {t.language}{' '}
         <select
-          className="pl-select"
+          className="paper-select pl-paper-ragged"
           disabled={!editable}
           value={language}
           onChange={(event) => change(event.target.value as Language)}

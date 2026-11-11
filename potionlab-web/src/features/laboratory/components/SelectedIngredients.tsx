@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { copy } from '../../../shared/i18n';
 import {
@@ -7,7 +8,8 @@ import {
 } from '../model/selectors';
 import { useLaboratoryStore } from '../model/useLaboratoryStore';
 import { SelectedIngredientCard } from './SelectedIngredientCard';
-export function SelectedIngredients({ children }) {
+
+export function SelectedIngredients({ children }: { children: ReactNode }) {
   const { ids, language, locked, failed, remove } = useLaboratoryStore(
     useShallow((state) => ({
       ids: state.selectedIds,
@@ -23,7 +25,10 @@ export function SelectedIngredients({ children }) {
     )
   );
   return (
-    <section className="selection pl-panel" aria-labelledby="selection-title">
+    <section
+      className="selection pl-frame pl-panel-background"
+      aria-labelledby="selection-title"
+    >
       <h2 id="selection-title">
         {copy[language].selection} ({ids.length}/3)
       </h2>

@@ -1,0 +1,17 @@
+@theme {
+  --spacing: 4px;
+  --font-laboratory: Georgia, 'Times New Roman', serif;
+  --color-cream: #f5e6c4;
+  --color-ink: #2b190e;
+  --color-control-focus: #ffdd91;
+  --color-control-border: #704522;
+  --color-option-paper: #ead2a7;
+  --color-frame: #6a4023;
+  --color-wood: #342416;
+  --color-panel: rgb(15 11 8 / 48%);
+  --color-selected: #eac780;
+  --container-laboratory: 1400px;
+  --spacing-icon: 20px;
+  --shadow-frame: 0 12px 36px #0009;
+  --shadow-ingredient: 0 5px 12px #0007;
+}

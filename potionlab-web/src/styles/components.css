@@ -1,0 +1,333 @@
+/* These elements already reserve space for the frame in their box model. */
+.app-shell,
+.startup,
+.catalog,
+.cauldron,
+.result,
+.selection,
+.ingredient-card,
+.selected-ingredient-card,
+.missing-ingredient-card,
+.lab-modal {
+  --frame-paint-width: 1;
+}
+
+.laboratory-theme {
+  @apply size-full font-laboratory text-cream;
+}
+
+.app-shell,
+.startup {
+  @apply min-w-0;
+  border: 18px solid;
+  background-clip: padding-box;
+  box-shadow: var(--shadow-frame);
+}
+
+.app-shell {
+  @apply relative z-0 mx-auto flex h-full max-w-laboratory flex-col overflow-hidden px-4 pb-4;
+}
+
+.app-shell::before {
+  content: '';
+  @apply absolute inset-0 -z-10;
+  background-image: url('../assets/theme/potionlab-open-shelves-1400x950.webp');
+  filter: brightness(0.5) blur(2px);
+}
+
+.lab-header {
+  @apply grid items-center gap-4;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px) minmax(0, 1fr);
+}
+
+.shop-sign {
+  @apply relative col-start-2 grid w-full place-items-center;
+  top: -5px;
+  aspect-ratio: 3;
+  padding: 9% 23% 2%;
+  filter: drop-shadow(0 5px 4px #0008);
+}
+
+.shop-sign-title {
+  @apply whitespace-nowrap font-bold text-ink;
+  font-size: clamp(1.45rem, 3vw, 2.65rem);
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff6;
+}
+
+.settings-button {
+  @apply col-start-3 justify-self-end;
+}
+
+.lab-layout {
+  @apply grid min-h-0 flex-1 grid-cols-2 gap-4;
+}
+
+.catalog,
+.cauldron,
+.result,
+.selection {
+  @apply flex min-w-0 flex-col p-4;
+  border: 9px solid;
+  background-clip: padding-box;
+}
+
+.catalog {
+  @apply min-h-0 gap-3;
+}
+
+.ingredient-grid {
+  @apply grid min-h-0 list-none grid-cols-3 content-start gap-3 overflow-y-auto;
+}
+
+.ingredient-card,
+.selected-ingredient-card,
+.missing-ingredient-card {
+  @apply min-w-0;
+  border: 7px solid;
+  background-clip: padding-box;
+  box-shadow: var(--shadow-ingredient);
+}
+
+.ingredient-card,
+.missing-ingredient-card {
+  @apply grid justify-center gap-2.5 p-2.5;
+  grid-template-rows: auto 1fr auto;
+}
+
+.ingredient-card {
+  @apply items-center;
+  overflow-wrap: anywhere;
+}
+
+.ingredient-card > img {
+  @apply aspect-square w-full justify-self-center;
+}
+
+.ingredient-name {
+  @apply grid min-h-12 place-items-center px-2 py-1.5 text-center font-bold text-ink;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  box-shadow:
+    inset 0 0 6px #75441c44,
+    0 2px 3px #0005;
+}
+
+.ingredient-card-selected {
+  outline: 2px solid var(--color-selected);
+  outline-offset: -2px;
+}
+
+.card-actions {
+  @apply flex items-center justify-center gap-2.5;
+}
+
+.workspace {
+  @apply grid min-h-0 min-w-0 gap-3;
+  grid-template-rows: minmax(0, 1fr) minmax(70px, 1fr) auto;
+}
+
+.cauldron {
+  @apply min-h-0 items-center gap-1;
+}
+
+.cauldron img,
+.cauldron .image-fallback {
+  @apply min-h-0;
+  flex: 1 0 auto;
+  max-height: 190px;
+  width: auto !important;
+}
+
+.result {
+  @apply min-h-0 min-w-0 gap-2;
+  flex: 0;
+}
+
+.result-description {
+  @apply min-h-0 overflow-y-auto whitespace-pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.selection {
+  @apply min-w-0 gap-2;
+}
+
+.selected-list {
+  @apply grid list-none grid-cols-3 gap-2;
+}
+
+.selected-ingredient-card {
+  @apply flex flex-col items-center justify-center p-2;
+  overflow-wrap: anywhere;
+}
+
+.brew-action {
+  @apply flex flex-col items-center gap-2;
+}
+
+.startup {
+  @apply grid flex-1 place-items-center;
+}
+
+.unsupported {
+  @apply grid min-h-0 flex-1 place-items-center overflow-auto p-4 text-center;
+}
+
+.image-fallback {
+  @apply grid max-w-full place-items-center overflow-hidden;
+  border: 1px solid;
+}
+
+.lab-modal {
+  @apply fixed inset-0 m-auto overflow-auto p-4 text-cream;
+  border: 7px solid;
+  background-clip: padding-box;
+  width: min(640px, calc(100vw - 48px));
+  max-height: calc(100dvh - 48px);
+  box-shadow: var(--shadow-frame);
+}
+
+.lab-modal::backdrop {
+  background: #0009;
+}
+
+.modal-content,
+.ingredient-info {
+  @apply flex flex-col gap-4;
+}
+
+.modal-header {
+  @apply flex items-center justify-between gap-4;
+}
+
+.ingredient-info img,
+.ingredient-info .image-fallback {
+  @apply w-auto self-center;
+  max-height: 40dvh;
+}
+
+.paper-button,
+.paper-select {
+  --paper-fallback: var(--color-control-border);
+  @apply max-w-full cursor-pointer rounded-[7px] font-laboratory font-bold text-ink;
+  font-size: 1rem;
+  line-height: 1.2;
+  border: solid var(--color-control-border);
+}
+
+.paper-button {
+  @apply inline-flex items-center justify-center gap-2 px-4 text-center;
+  padding-block: 9px;
+  border-width: 3px;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.paper-button:hover:not(:disabled):not([aria-disabled='true']) {
+  transform: scale(1.01);
+}
+
+.paper-button:focus-visible,
+.paper-select:focus-visible {
+  outline: 1px solid var(--color-control-focus);
+  outline-offset: 2px;
+}
+
+.paper-button:disabled,
+.paper-button[aria-disabled='true'],
+.paper-select:disabled {
+  @apply cursor-not-allowed opacity-[0.48];
+  box-shadow: inset 0 1px 3px #0005;
+}
+
+.paper-select {
+  @apply appearance-none px-3;
+  padding-block: 3px;
+  border-width: 2px;
+}
+
+.paper-select option {
+  @apply bg-option-paper text-ink;
+}
+
+.icon {
+  @apply size-icon shrink-0;
+  background: var(--icon-image) center / contain no-repeat;
+}
+
+.icon-button {
+  border: none;
+}
+
+.icon-button:hover,
+.icon-info:hover {
+  transform: scale(1.1);
+}
+
+.icon-settings {
+  --icon-image: url('../assets/icons/gear-wood.webp');
+}
+
+.icon-close {
+  --icon-image: url('../assets/icons/wood-close-256.webp');
+}
+
+.icon-check {
+  --icon-image: url('../assets/icons/wood-check-256.webp');
+}
+
+.icon-add {
+  --icon-image: url('../assets/icons/wood-plus-256.webp');
+}
+
+.icon-info {
+  --icon-image: url('../assets/icons/wood-question-256.webp');
+}
+
+@media (min-width: 1440px) {
+  .ingredient-grid {
+    @apply grid-cols-4;
+  }
+}
+
+@media (max-height: 650px) {
+  .app-shell {
+    @apply gap-2 p-2;
+  }
+
+  .workspace {
+    @apply gap-1.5;
+  }
+
+  .selection,
+  .cauldron,
+  .result {
+    @apply gap-1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-button {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .paper-button,
+  .paper-select {
+    color: ButtonText;
+    border-color: ButtonText;
+  }
+
+  .shop-sign {
+    filter: none;
+  }
+
+  .shop-sign-title {
+    color: CanvasText;
+    text-shadow: none;
+  }
+}

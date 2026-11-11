@@ -34,7 +34,7 @@ export function BrewAction({ newCycle }: { newCycle: () => void }) {
     <div className="brew-action">
       <p>{locked ? t.locked : t.choose}</p>
       <button
-        className="pl-button pl-raged"
+        className="paper-button pl-paper-ragged"
         disabled={!complete && !canBrew}
         onClick={activate}
       >

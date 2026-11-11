@@ -29,19 +29,18 @@ export function IngredientCard({
   const t = copy[language];
   return (
     <li
-      className={`ingredient-card pl-card ${selected ? 'pl-card--selected' : ''}`}
+      className={`ingredient-card pl-floral-frame pl-wood-surface ${selected ? 'ingredient-card-selected' : ''}`}
     >
       <Picture
-        imgClassName="pl-card__image"
         src={assetUrl(item.assets.thumb128)}
         size={128}
         alt={item.name}
         failed={failed}
       />
-      <span className="pl-card__name">{item.name}</span>
-      <div className="card-actions pl-card__actions">
+      <span className="ingredient-name pl-paper-ragged">{item.name}</span>
+      <div className="card-actions">
         <button
-          className={'pl-icon pl-info'}
+          className="icon icon-button icon-info"
           aria-label={`${t.info}: ${item.name}`}
           onClick={() => openInfo(id)}
         ></button>
@@ -49,7 +48,7 @@ export function IngredientCard({
           aria-label={`${t.add}: ${item.name}`}
           disabled={!canAdd}
           onClick={() => add(id)}
-          className={`pl-icon ${selected ? 'pl-tick' : 'pl-add'}`}
+          className={`icon icon-button ${selected ? 'icon-check' : 'icon-add'}`}
         />
       </div>
     </li>

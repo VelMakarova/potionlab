@@ -61,7 +61,7 @@ export function IngredientInfoModal({
               .join(', ')}
           </p>
           <button
-            className="pl-button pl-raged"
+            className="paper-button pl-paper-ragged"
             disabled={!canAdd}
             onClick={() => add(id)}
           >

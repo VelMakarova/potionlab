@@ -9,7 +9,20 @@ import {
   selectCatalogReady,
   selectEditingAllowed,
 } from './selectors';
+import type { Language } from '../../../shared/i18n/types';
 import type { BrewAttempt, LaboratoryStore } from './types';
+
+const LANGUAGE_STORAGE_KEY = 'language';
+
+function readLanguage(): Language {
+  try {
+    const language = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (language === 'en' || language === 'ua') return language;
+  } catch {
+    // Storage may be unavailable in restricted browser contexts.
+  }
+  return 'en';
+}
 
 export function createLaboratoryStore(
   dependencies = { load: loadLaboratory, brew: brewPotion }
@@ -49,7 +62,7 @@ export function createLaboratoryStore(
       }
     }
     return {
-      language: 'ua',
+      language: readLanguage(),
       catalog: { status: 'idle' },
       selectedIds: [],
       brewing: { phase: 'editing', error: null },
@@ -62,6 +75,11 @@ export function createLaboratoryStore(
       },
       async changeLanguage(language) {
         if (!selectEditingAllowed(get()) || language === get().language) return;
+        try {
+          localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+        } catch {
+          // Language switching remains available when storage is blocked.
+        }
         set({ language, brewing: { phase: 'editing', error: null } });
         await load();
       },

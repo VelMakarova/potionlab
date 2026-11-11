@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { UnsupportedViewportScreen } from '../../shared/components/UnsupportedViewportScreen';
 import { useLaboratoryStore } from './model/useLaboratoryStore';
 import { selectCatalogReady } from './model/selectors';
 import { LaboratoryLayout } from './LaboratoryLayout';
@@ -9,7 +10,7 @@ import { IngredientInfoModal } from './components/IngredientInfoModal';
 import { BrewingWorkspace } from './components/BrewingWorkspace';
 import { SettingsModal } from './components/SettingsModal';
 
-export function LaboratoryPage() {
+export function LaboratoryPage({ desktop }: { desktop: boolean }) {
   const [infoId, setInfoId] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
@@ -17,10 +18,17 @@ export function LaboratoryPage() {
   const ready = useLaboratoryStore(selectCatalogReady);
 
   return (
-    <main className="app-shell pl-frame" lang={language === 'ua' ? 'uk' : 'en'}>
-      <AppHeader openSettings={() => setSettingsOpen(true)} />
+    <main
+      className="app-shell pl-frame"
+      lang={!desktop || language === 'ua' ? 'uk' : 'en'}
+    >
+      <AppHeader
+        openSettings={desktop ? () => setSettingsOpen(true) : undefined}
+      />
 
-      {ready ? (
+      {!desktop ? (
+        <UnsupportedViewportScreen />
+      ) : ready ? (
         <LaboratoryLayout
           catalog={<IngredientCatalog openInfo={setInfoId} />}
           workspace={<BrewingWorkspace newCycle={() => setInfoId(null)} />}
@@ -29,14 +37,14 @@ export function LaboratoryPage() {
         <StartupScreen />
       )}
 
-      {settingsOpen && (
+      {desktop && settingsOpen && (
         <SettingsModal
           close={() => setSettingsOpen(false)}
           languageChanged={() => setInfoId(null)}
         />
       )}
 
-      {ready && infoId && (
+      {desktop && ready && infoId && (
         <IngredientInfoModal
           key={`${infoId}-${language}`}
           id={infoId}

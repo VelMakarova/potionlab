@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100dvh;
+  color: white;
+  font-size: 14px;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+img {
+  @apply block max-w-full object-contain;
+}
+
+button,
+select {
+  @apply max-w-full;
+}

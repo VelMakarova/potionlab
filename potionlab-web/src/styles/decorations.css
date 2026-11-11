@@ -1,0 +1,68 @@
+@property --frame-paint-width {
+  syntax: '*';
+  inherits: false;
+}
+
+.pl-frame,
+.pl-floral-frame {
+  border-color: var(--color-frame);
+  border-image: var(--frame-image) 55 /
+    var(--frame-paint-width, var(--frame-default-width)) / 0 stretch;
+}
+
+.pl-frame {
+  --frame-image: url('../assets/theme/wood-frame.webp');
+  --frame-default-width: 18px;
+}
+
+.pl-floral-frame {
+  --frame-image: url('../assets/theme/card-frame-botanical.webp');
+  --frame-default-width: 7px;
+}
+
+.pl-dark-wood {
+  background-image: url('../assets/theme/dark-wood.webp');
+}
+
+.pl-wood-surface {
+  background-color: var(--color-wood);
+  background-image:
+    linear-gradient(#100a0755, #100a0799),
+    url('../assets/theme/wood-surface.webp');
+  background-size:
+    auto,
+    256px 256px;
+}
+
+.pl-panel-background {
+  background-color: var(--color-panel);
+}
+
+.pl-paper-ragged {
+  background: url('../assets/theme/parchment-ragged.webp') center / 100% 100%
+    no-repeat var(--paper-fallback, transparent);
+}
+
+.pl-sign-background {
+  background: url('../assets/theme/shop-sign.webp') center / contain no-repeat;
+}
+
+@media (forced-colors: active) {
+  .pl-frame,
+  .pl-floral-frame:where(
+    .ingredient-card,
+    .selected-ingredient-card,
+    .missing-ingredient-card
+  ) {
+    border-image: none;
+    border-color: CanvasText;
+  }
+
+  .pl-sign-background {
+    background: Canvas;
+  }
+
+  .pl-paper-ragged:where(.paper-button, .paper-select) {
+    background: Canvas;
+  }
+}
